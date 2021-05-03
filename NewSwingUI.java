@@ -14,14 +14,21 @@ public class NewSwingUI implements UIContext {
   public  void setGraphics(Graphics graphics) {
     this.graphics = graphics;
   }
-  public void draw(Label label) {
-    if (label.getStartingPoint() != null) {
-      if (label.getText() != null) {
-        graphics.drawString(label.getText(), (int) label.getStartingPoint().getX(), (int) label.getStartingPoint().getY());
+  public void draw(Item label) {
+    if (label instanceof Label){
+
+    if (((Label) label).getStartingPoint() != null) {
+      if (((Label) label).getText() != null) {
+        graphics.drawString(((Label) label).getText(), (int) ((Label) label).getStartingPoint().getX(), (int) ((Label) label).getStartingPoint().getY());
       }
     }
-    int length = graphics.getFontMetrics().stringWidth(label.getText());
-    graphics.drawString("_", (int) label.getStartingPoint().getX() + length, (int) label.getStartingPoint().getY());
+    int length = graphics.getFontMetrics().stringWidth(((Label) label).getText());
+    graphics.drawString("_", (int) ((Label) label).getStartingPoint().getX() + length, (int) ((Label) label).getStartingPoint().getY());
+  }
+
+  else{
+    System.out.println( "Cant draw unknown Item \n");
+  }
   }
   public void drawLine(Point point1,  Point point2) {
     int i1 = 0;
@@ -41,7 +48,5 @@ public class NewSwingUI implements UIContext {
       graphics.drawLine(i1, i2, i3, i4);
     }
   }
-  public void draw(Item item) {
-    System.out.println( "Cant draw unknown Item \n");
-  }
+ 
 }

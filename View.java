@@ -8,6 +8,7 @@ class View extends JFrame {
   private JPanel buttonPanel;
   private JPanel filePanel;
   private JButton lineButton;
+  private JButton moveButton;
   private JButton deleteButton;
   private JButton labelButton;
   private JButton selectButton;
@@ -92,6 +93,7 @@ class View extends JFrame {
     contentpane.add(buttonPanel, "North");
     contentpane.add(drawingPanel);
     lineButton= new LineButton(undoManager, this, drawingPanel);
+    moveButton= new MoveButton(undoManager, this, drawingPanel);
     triangleButton= new TriangleButton(undoManager, this, drawingPanel);
     labelButton = new LabelButton(undoManager, this, drawingPanel);
     selectButton= new SelectButton(undoManager, this, drawingPanel);
@@ -109,6 +111,7 @@ class View extends JFrame {
     buttonPanel.add(openButton);
     buttonPanel.add(undoButton);
     buttonPanel.add(redoButton);
+    buttonPanel.add(moveButton);
     this.setSize(600, 400);
   }
   public void refresh() {
